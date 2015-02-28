@@ -18,7 +18,7 @@ var level_01_A = new Sprite();
 			level_01_A.image_background.y = Math.sin(sway_x) * 20;
 			sway_x += 0.009 * Math.random();
 			level_01_A.image_background.x = Math.sin(sway_y) * 20;
-			sway_y += 0.02 * Math.random();;
+			sway_y += 0.020 * Math.random();;
 			if(sway_x >= 2*Math.PI) sway_x = 0;
 			if(sway_y >= 2*Math.PI) sway_y = 0;
 		}
