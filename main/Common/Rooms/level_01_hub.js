@@ -65,7 +65,6 @@ var level_01_hub = new Sprite();
 					("./Common/Textures/a icon up.png");
 			}
 		}
-		level_01_hub.button_iconA.grow = 0;
 		level_01_hub.button_iconA.click = function() {
 			changeRoom(level_01_A);
 		}
@@ -87,6 +86,9 @@ var level_01_hub = new Sprite();
 					("./Common/Textures/b icon up.png");
 			}
 		}
+		level_01_hub.button_iconB.click = function() {
+			changeRoom(level_01_B);
+		}
 		
 		level_01_hub.button_iconC = new Sprite();
 		level_01_hub.button_iconC.width  = 70;
@@ -104,6 +106,9 @@ var level_01_hub = new Sprite();
 				level_01_hub.button_iconC.image = Textures.load
 					("./Common/Textures/c icon up.png");
 			}
+		}
+		level_01_hub.button_iconC.click = function() {
+			changeRoom(level_01_C);
 		}
 		
 		level_01_hub.button_iconD = new Sprite();
@@ -123,6 +128,9 @@ var level_01_hub = new Sprite();
 					("./Common/Textures/d icon up.png");
 			}
 		}
+		level_01_hub.button_iconD.click = function() {
+					changeRoom(level_01_D);
+		}
 		
 		// Visible sprites at creation time
 		world.addChild(level_01_hub.image_background);
@@ -133,6 +141,7 @@ var level_01_hub = new Sprite();
 		world.addChild(level_01_hub.button_iconB);
 		world.addChild(level_01_hub.button_iconC);
 		world.addChild(level_01_hub.button_iconD);
+		world.addChild(level_01_hub.target_loop);
 		
 		// Active sprites at creation time
 		active_sprites.push(level_01_hub.button_notes);
@@ -140,6 +149,19 @@ var level_01_hub = new Sprite();
 		active_sprites.push(level_01_hub.button_iconB);
 		active_sprites.push(level_01_hub.button_iconC);
 		active_sprites.push(level_01_hub.button_iconD);
+		
+	}
+			
+	// Animation time loop
+	level_01_hub.target_loop = new Sprite();
+	level_01_hub.target_loop.value = 0;
+	level_01_hub.target_loop.update = function() {
+		//level_01_hub.image_comment.visible = true;
+		level_01_hub.target_loop.value++;
+		//level_01_hub.image_comment.text = level_01_hub.target_loop.value;
+		if(level_01_hub.target_loop.value == 3600) { // loop every minute
+			level_01_hub.target_loop.value = 0;
+		}
 	}
 	
 	// Clear this room
