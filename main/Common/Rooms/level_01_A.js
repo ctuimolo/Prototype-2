@@ -2,6 +2,8 @@
 var level_01_A = new Sprite();
 	// Create this room
 	level_01_A.create = function() {
+		var info_count = 0;
+		
 		var sway_x = 0;
 		var sway_y = 0;
 		
@@ -39,6 +41,7 @@ var level_01_A = new Sprite();
 		level_01_A.image_target_A.y = 0;
 		level_01_A.image_target_A.image = Textures.load
 			("./Common/Textures/Level 01/target-A.png");
+			
 		// Target A animation
 		level_01_A.image_target_A.frameWidth   = 32;
 		level_01_A.image_target_A.frameHeight  = 64;
@@ -48,16 +51,23 @@ var level_01_A = new Sprite();
 		level_01_A.image_target_A.addAnimation("phone_out",2,1);
 		level_01_A.image_target_A.addAnimation("phone_away",3,1);
 		level_01_A.image_target_A.update = function() {
+			// info counter
+			info_count++;
 			// Background sway
 			level_01_A.image_target_A.x = level_01_A.image_background.x + 520;
 			level_01_A.image_target_A.y = level_01_A.image_background.y + 340;
 			// Animations
-			if(level_01_hub.target_loop.value>=600 && level_01_hub.target_loop.value<660) {
+			if(level_01_hub.target_loop.value>=600 && level_01_hub.target_loop.value<660) { // >= 10 seconds <11 seconds
 				level_01_A.image_target_A.animation = "check_phone";
 				level_01_A.image_target_A.frameRate = 2;
 			}else if(level_01_hub.target_loop.value>=660 && level_01_hub.target_loop.value<780) {
 				level_01_A.image_target_A.animation = "phone_out";
 				level_01_A.image_target_A.frameRate = 0;
+				info_count++;
+				if(!level_01_A.target1_has_seen && info_count == 60) {
+					level_01_A.target1_seen_info = "some info";
+					level_01_A.target1_has_seen = true;
+				}
 			}else if(level_01_hub.target_loop.value>=780 && level_01_hub.target_loop.value<810) {
 				level_01_A.image_target_A.animation = "phone_away";
 				level_01_A.image_target_A.frameRate = 0;

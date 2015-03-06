@@ -150,7 +150,19 @@ var level_01_hub = new Sprite();
 		active_sprites.push(level_01_hub.button_iconD);
 		
 	}
-			
+	
+	level_01_hub.target1_has_seen = false;
+	level_01_hub.target1_seen_info = "";
+	
+	level_01_hub.target2_has_seen = false;
+	level_01_hub.target2_seen_info = "";
+	
+	level_01_hub.target3_has_seen = false;
+	level_01_hub.target3_seen_info = "";
+	
+	level_01_hub.target4_has_seen = false;
+	level_01_hub.target4_seen_info = "";
+	
 	// Animation time loop
 	level_01_hub.target_loop = new Sprite();
 	level_01_hub.target_loop.value = 0;

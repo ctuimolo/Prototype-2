@@ -2,6 +2,8 @@
 var level_01_B = new Sprite();
 	// Create this room
 	level_01_B.create = function() {
+		var info_count;
+		
 		var sway_x = 0;
 		var sway_y = 0;
 		
@@ -67,10 +69,20 @@ var level_01_B = new Sprite();
 				|| (level_01_hub.target_loop.value>=1980 && level_01_hub.target_loop.value<2160)) {
 				level_01_B.image_target_B.animation = "check_watch";
 				level_01_B.image_target_B.frameRate = 0;
+				info_count++;
+				if(level_01_hub.target2_has_seen && info_count == 120){
+						level_01_hub.seen_info = "some info";
+						level_01_hub.target2_has_seen = true;
+				}
 			}else if((level_01_hub.target_loop.value>=360 && level_01_hub.target_loop.value<540)
 				|| (level_01_hub.target_loop.value>=2160 && level_01_hub.target_loop.value<2340)) {
 				level_01_B.image_target_B.animation = "look_around";
 				level_01_B.image_target_B.frameRate = 0;
+				info_count++;
+				if(level_01_hub.target2_has_seen && info_count == 120){
+						level_01_hub.target2_seen_info = "some info";
+						level_01_hub.target2_has_seen = true;
+				}
 			}else {
 				level_01_B.image_target_B.animation = "idle";
 				level_01_B.image_target_B.frameRate = 0;
